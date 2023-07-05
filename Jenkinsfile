@@ -9,7 +9,6 @@ pipeline{
             agent{
 
                 docker {
-
                     image 'maven'
                 }
             }
@@ -18,8 +17,10 @@ pipeline{
                 script{
 
                     withSonarQubeEnv(credentialsId: 'sonarqube') {
-                    
-                    sh 'maven clean package sonar:sonar'
+                    def mavenHome = tool name: "Maven-3.8.6", type: "maven"
+                    def mavenCMD = "${mavenHome}/bin/mvn"
+                    sh "${mavenCMD} clean package"
+                 //   sh 'maven clean package sonar:sonar'
                     }
                 }
             }
