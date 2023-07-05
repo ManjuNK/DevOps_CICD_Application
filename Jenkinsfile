@@ -12,11 +12,6 @@ pipeline{
                     image 'maven'
                 }
             }
-            
-            tools {
-                maven '3.9.3'
-                }
-                
             steps{
 
                 script{
