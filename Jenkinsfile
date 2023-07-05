@@ -13,6 +13,7 @@ pipeline{
                     args '-v /root/.m2:/root/.m2' 
                 }
             }
+
             steps{
 
                 script{
@@ -23,16 +24,17 @@ pipeline{
                         }
                 }
             }
-            stage("Quality Gate Status"){
 
-                steps{
+        }
+        stage("Quality Gate Status"){
 
-                    script{
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube'
-                    }
+            steps{
+
+                script{
+                    
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube'
                 }
             }
-
         }
     }
 }
