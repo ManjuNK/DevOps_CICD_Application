@@ -18,7 +18,7 @@ pipeline{
 
                     withSonarQubeEnv(credentialsId: 'sonarqube') {
 
-                    def mavenHome = tool name: "Maven-3.8.6", type: "maven"
+                    def mavenHome = tool name: "Maven-3.9.3", type: "maven"
                     def mavenCMD = "${mavenHome}/bin/mvn"
                     sh "${mavenCMD} clean package sonar:sonar"
                     }
