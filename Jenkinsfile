@@ -12,9 +12,6 @@ pipeline{
                     image 'maven'
                 }
             }
-            tools {
-                maven '3.9.3'
-                }
             
             steps{
 
@@ -22,7 +19,7 @@ pipeline{
 
                     withSonarQubeEnv(credentialsId: 'sonarqube') {
 
-                            sh "mvn clean package sonar:sonar"
+                            sh 'mvn clean package sonar:sonar'
                         }
                 }
             }
