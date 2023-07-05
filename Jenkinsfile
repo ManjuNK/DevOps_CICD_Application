@@ -56,6 +56,7 @@ pipeline{
 
                         docker rmi 3.64.237.2:8083/springapp:${VERSION}
                         '''
+                    }
                 }
             }
        }
