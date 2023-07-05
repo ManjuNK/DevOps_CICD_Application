@@ -13,7 +13,6 @@ pipeline{
                     args '-v /root/.m2:/root/.m2' 
                 }
             }
-            
             steps{
 
                 script{
@@ -22,6 +21,15 @@ pipeline{
 
                             sh 'mvn clean package sonar:sonar'
                         }
+                }
+            }
+            stage("Quality Gate Status"){
+
+                steps{
+
+                    script{
+                        waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube'
+                    }
                 }
             }
 
