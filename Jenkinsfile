@@ -85,10 +85,10 @@ pipeline{
                         tar -czvf myapp-${helmversion}.tgz /myapp
                         curl -u admin:$nexus-creds http://3.64.237.2:8081/repository/Helm-Hosted-Repo/ --upload-file myapp-${helmversion}.tgz -v'
                         '''
-                        }
+                    }
+                }
             }
         }
-       }
     }
     post {
 		always {
